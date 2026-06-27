@@ -1,4 +1,4 @@
-# Codebeamer ISO26262 AI Sidebar
+# AI Sidebar
 
 ## Backend 실행
 
