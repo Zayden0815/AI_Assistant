@@ -1,0 +1,16 @@
+{
+  "pdf_path": "D:\\11\\AI_ASSISTANT\\data\\iso26262.pdf",
+  "embedding_model": "Qwen/Qwen3-Embedding-4B",
+  "chunk_size": 1200,
+  "chunk_overlap": 250,
+  "min_page_text_len": 80,
+  "min_chunk_text_len": 120,
+  "embedding_dim": 2560,
+  "total_chunks": 350,
+  "faiss_metric": "IndexFlatIP",
+  "normalized_embeddings": true,
+  "db_type": "faiss_jsonl",
+  "index_file": "index.faiss",
+  "text_file": "texts.jsonl",
+  "metadata_file": "metadatas.jsonl"
+}

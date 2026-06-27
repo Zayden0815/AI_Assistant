@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "name": "ISO26262 AI Safety Assistant",
+  "version": "1.0.0",
+  "description": "ISO26262 RAG + Qwen3 based requirement analysis, test case generation, traceability, and report export.",
+  "permissions": [
+    "sidePanel",
+    "storage",
+    "activeTab",
+    "scripting",
+    "downloads"
+  ],
+  "host_permissions": [
+    "http://127.0.0.1:8000/*",
+    "http://localhost:8000/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "side_panel": {
+    "default_path": "sidepanel.html"
+  },
+  "action": {
+    "default_title": "ISO26262 AI Assistant"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "requirement": "The vehicle shall perform emergency braking when a child suddenly enters the driving path.",
+  "development_method": "ATDD",
+  "actual_action": "AUTO_INFER",
+  "yolo_model": "yolov8n.pt",
+  "confidence": 0.55,
+  "frame_step": 1,
+  "max_frames": 50
+}

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>ISO26262 AI Assistant</title>
+  <link rel="stylesheet" href="sidepanel.css" />
+</head>
+<body>
+  <div class="container">
+    <h2>ISO26262 Assistant</h2>
+    <p class="subtitle">Requirement → ISO Evidence → Test Case → Report</p>
+
+    <label>Requirement</label>
+    <textarea id="requirementInput" placeholder="The vehicle shall automatically apply emergency braking when a pedestrian is detected within the stopping distance."></textarea>
+
+    <label>Evidence Image</label>
+    <input type="file" id="imageInput" accept="image/*" multiple />
+
+    <div class="grid">
+      <div>
+        <label>ISO Part</label>
+        <select id="isoPart">
+          <option value="all">All</option>
+          <option value="part3">Part 3</option>
+          <option value="part4">Part 4</option>
+          <option value="part5">Part 5</option>
+          <option value="part6">Part 6</option>
+          <option value="part8">Part 8</option>
+          <option value="part9">Part 9</option>
+          <option value="part11">Part 11</option>
+        </select>
+      </div>
+
+      <div>
+        <label>Top-K</label>
+        <input type="number" id="topK" value="8" min="1" max="20" />
+      </div>
+
+      <div>
+        <label>TC Prefix</label>
+        <input type="text" id="tcPrefix" value="ATDD" />
+      </div>
+
+      <div>
+        <label>Development Method</label>
+        <select id="developmentMethod">
+          <option value="ATDD">ATDD</option>
+          <option value="BDD">BDD</option>
+          <option value="TDD">TDD</option>
+          <option value="DDD">DDD</option>
+        </select>
+      </div>
+    </div>
+
+    <label class="check-label">
+      <input type="checkbox" id="autoTcNumber" checked />
+      Auto TC Numbering
+    </label>
+
+    <div class="grid">
+      <div>
+        <label>Output Type</label>
+        <select id="outputType">
+          <option value="analysis">Requirement Analysis</option>
+          <option value="testcase">Test Case Generation</option>
+          <option value="traceability">Traceability Matrix</option>
+          <option value="report">Safety Report</option>
+        </select>
+      </div>
+
+      <div>
+        <label>Document Template</label>
+        <select id="documentTemplate">
+          <option value="safety_report">Functional Safety Report</option>
+          <option value="test_case_sheet">Test Case Sheet</option>
+          <option value="traceability_matrix">Traceability Matrix</option>
+          <option value="audit_report">Audit Evidence Report</option>
+        </select>
+      </div>
+
+      <div>
+        <label>Export Format</label>
+        <select id="exportFormat">
+          <option value="json">JSON Test Case</option>
+          <option value="excel">Excel Test Sheet</option>
+          <option value="pdf">PDF Report</option>
+        </select>
+      </div>
+
+      <div>
+        <label>ASIL Policy</label>
+        <select id="asilPolicy">
+          <option value="candidate">ASIL Candidate + HARA Required</option>
+          <option value="strict">Strict Evidence Only</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="button-row">
+      <button id="analyzeBtn">Analyze Requirement</button>
+      <button id="resetSettingsBtn" class="secondary">Reset Settings</button>
+    </div>
+
+    <div id="loading" class="hidden">분석 중...</div>
+    <div id="statusBox" class="status"></div>
+
+    <section><h3>Development Method</h3><div id="methodResult" class="card"></div></section>
+    <section><h3>Related ISO Parts</h3><div id="relatedPartsResult" class="card"></div></section>
+    <section><h3>Referenced Pages</h3><div id="referencedPagesResult" class="card"></div></section>
+    <section><h3>ISO 26262 Evidence</h3><div id="isoResult" class="card"></div></section>
+    <section><h3>Hazard / ASIL Candidate</h3><div id="hazardResult" class="card"></div></section>
+    <section><h3>Safety Goal / FSR / TSR</h3><div id="safetyResult" class="card"></div></section>
+
+    <section>
+      <div class="button-row">
+        <button id="generateTcBtn">Generate Test Cases</button>
+        <button id="generateTraceBtn">Generate Traceability</button>
+      </div>
+      <button id="generateReportBtn">Generate Report Data</button>
+    </section>
+
+    <section><h3>Generated Test Cases</h3><div id="testCaseResult" class="card"></div></section>
+    <section><h3>Traceability</h3><div id="traceResult" class="card"></div></section>
+
+    <div class="button-row">
+      <button id="saveBtn">Save Result</button>
+      <button id="exportBtn">Export Document</button>
+    </div>
+
+    <section><h3>Saved History</h3><div id="historyResult" class="card"></div></section>
+  </div>
+
+  <script src="sidepanel.js"></script>
+</body>
+</html>

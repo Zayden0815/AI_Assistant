@@ -1,0 +1,11 @@
+fastapi
+uvicorn
+pydantic
+faiss-cpu
+numpy
+sentence-transformers
+transformers
+accelerate
+torch
+reportlab
+openpyxl

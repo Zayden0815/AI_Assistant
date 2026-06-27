@@ -1,0 +1,38 @@
+async function exportDocument() {
+  const payload = collectCurrentData();
+
+  payload.export_format = getValue("exportFormat") || "pdf";
+  payload.document_template = getValue("documentTemplate") || "safety_report";
+
+  try {
+    const response = await fetch("http://127.0.0.1:8000/export-document", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(payload)
+    });
+
+    if (!response.ok) {
+      throw new Error(`Export failed: ${response.status}`);
+    }
+
+    const blob = await response.blob();
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement("a");
+
+    const ext = payload.export_format === "excel" ? "xlsx" : "pdf";
+
+    a.href = url;
+    a.download = `ISO26262_Report.${ext}`;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+
+    window.URL.revokeObjectURL(url);
+
+  } catch (error) {
+    console.error(error);
+    alert("문서 Export 실패. FastAPI 서버와 /export-document API를 확인하세요.");
+  }
+}

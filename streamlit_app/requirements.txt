@@ -1,0 +1,10 @@
+streamlit
+pandas
+numpy
+opencv-python
+Pillow
+ultralytics
+openpyxl
+reportlab
+requests
+plotly
